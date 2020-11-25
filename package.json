@@ -1,8 +1,14 @@
 {
-  "name": "peerjs",
+  "name": "@sammccord/peerjs",
   "version": "1.3.1",
   "description": "PeerJS client",
-  "main": "./dist/peerjs.min.js",
+  "source": "lib/exports.ts",
+  "unpkg": "dist/peerjs.umd.js",
+  "main": "dist/peerjs.js",
+  "umd:main": "dist/peerjs.umd.js",
+  "module": "dist/peerjs.m.js",
+  "esmodule": "dist/peerjs.modern.js",
+  "types": "dist/peerjs.d.ts",
   "homepage": "https://github.com/peers/peerjs#readme",
   "keywords": [
     "peerjs",
@@ -29,24 +35,23 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "parcel build lib/exports.ts --out-file peerjs.min.js",
-    "build-nonminified": "parcel build lib/exports.ts --out-file peerjs.js --no-minify",
+    "build": "microbundle",
+    "build-nonminified": "microbundle --no-compress",
     "prepublishOnly": "npm run build",
     "test": "mocha -r ts-node/register -r jsdom-global/register test/**/*.ts"
   },
   "release": {
     "branch": "master"
   },
-  "types": "./index.d.ts",
   "devDependencies": {
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "chai": "^4.2.0",
     "jsdom": "^16.2.2",
     "jsdom-global": "^3.0.2",
+    "microbundle": "^0.12.4",
     "mocha": "^7.1.2",
     "mock-socket": "8.0.5",
-    "parcel-bundler": "^1.12.4",
     "standard": "^14.1.0",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
